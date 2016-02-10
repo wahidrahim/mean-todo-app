@@ -8,9 +8,9 @@ html(ng-app='Todo')
     .container
       .row
         .col-xs-12
-          div.stats
-            | Outstanding tasks #[span#tasks-left]
-      .row
+          div.incompleteTasks
+            span(ng-show='incompleteTasks()')
+              | Incomplete tasks {{incompleteTasks()}}
         .col-xs-12
           div
             form(ng-submit='addTask(task)')
@@ -21,12 +21,15 @@ html(ng-app='Todo')
       .row
         .col-xs-12
           table.table.table-hover
-            tr
+            tr(ng-click='clearCompleted()')
               th.text-left task
               th.text-right added
-            tr(ng-repeat='task in tasks')
-              td.text-left {{ task.name }}
-              td.text-right {{ task.added | date: 'EEE, MMM dd, HH:mm:ss' }}
+            tr(ng-repeat='task in tasks' ng-click='taskComplete(task)')
+              td.text-left(ng-class='{completed: task.done}') {{task.name}}
+              td.text-right
+                span(ng-hide='task.done') {{task.added}}
+                a(href='#', ng-show='task.done', ng-click='taskClear(task)') clear
 
     script(src='bower_components/angular/angular.min.js')
+    script(src='bower_components/moment/min/moment.min.js')
     script(src='js/controllers.js')

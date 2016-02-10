@@ -1,8 +1,17 @@
 .container {
-  margin-top: 60px;
+  padding-top: 100px;
+  width: 500px;
 }
 
 form button {
-  margin-top: 5px;
   width: 100%;
+}
+
+.incompleteTasks {
+  height: 30px;
+}
+
+.completed {
+  color: #999;
+  text-decoration: line-through;
 }
