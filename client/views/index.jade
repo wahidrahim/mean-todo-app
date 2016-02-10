@@ -1,6 +1,25 @@
 doctype html
-html
+html(ng-app='Todo')
   head
     meta(charset='utf-8')
+    link(rel='stylesheet', href='bower_components/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='css/styles.css')
   body
-    | not much
+    .container
+      .row
+        .col-xs-12
+          div.stats
+            | Outstanding tasks #[span#tasks-left]
+      .row
+        .col-xs-12
+          div(ng-controller='TodoController')
+            form
+              input.form-control(placeholder='task')
+              button.btn(type='submit') add
+      .row
+        .col-xs-12
+          table.table.table-hover
+            tr
+              th.text-left #
+              th.text-center task
+              th.text-right added
