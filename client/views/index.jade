@@ -4,7 +4,7 @@ html(ng-app='Todo')
     meta(charset='utf-8')
     link(rel='stylesheet', href='bower_components/bootstrap/dist/css/bootstrap.min.css')
     link(rel='stylesheet', href='css/styles.css')
-  body
+  body(ng-controller='TodoController')
     .container
       .row
         .col-xs-12
@@ -12,14 +12,21 @@ html(ng-app='Todo')
             | Outstanding tasks #[span#tasks-left]
       .row
         .col-xs-12
-          div(ng-controller='TodoController')
-            form
-              input.form-control(placeholder='task')
-              button.btn(type='submit') add
+          div
+            form(ng-submit='addTask(task)')
+              .form-group
+                input.form-control(ng-model='task.name', placeholder='task')
+              .form-group
+                button.btn(type='submit') add
       .row
         .col-xs-12
           table.table.table-hover
             tr
-              th.text-left #
-              th.text-center task
+              th.text-left task
               th.text-right added
+            tr(ng-repeat='task in tasks')
+              td.text-left {{ task.name }}
+              td.text-right {{ task.added | date: 'EEE, MMM dd, HH:mm:ss' }}
+
+    script(src='bower_components/angular/angular.min.js')
+    script(src='js/controllers.js')
