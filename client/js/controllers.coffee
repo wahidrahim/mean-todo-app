@@ -1,13 +1,7 @@
 app = angular.module('Todo', [])
 
-old = {
-  name: 'old one'
-  done: false
-  added: moment('1992-06-14').fromNow()
-}
-
 app.controller 'TodoController', ($scope, $filter)->
-  $scope.tasks = [old]
+  $scope.tasks = []
   $scope.task = {}
 
   $scope.incompleteTasks = ()->

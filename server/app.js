@@ -17,6 +17,8 @@ app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 
+app.use('/bower_components', express["static"]('bower_components'));
+
 app.use(express["static"]('client'));
 
 app.get('/', function(req, res) {
