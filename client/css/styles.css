@@ -17,3 +17,8 @@ form button {
 }
 
 input, button { border-radius: 0 !important; }
+
+.clear {
+  cursor: pointer;
+  cusror: hand;
+}

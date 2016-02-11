@@ -17,19 +17,19 @@ html(ng-app='Todo')
               .form-group
                 input.form-control(ng-model='task.name', placeholder='task')
               .form-group
-                button.btn(type='submit') add
+                button.btn.btn-primary(type='submit' ng-class='{disabled: !task.name}') add
       .row
         .col-xs-12
           table.table.table-hover
             tr(ng-click='clearCompleted()')
               th.text-left task
               th.text-right added
-            tr(ng-repeat='task in tasks' ng-click='taskComplete(task)')
+            tr(ng-repeat='task in tasks' ng-click='toggleComplete(task)')
               td.text-left(ng-class='{completed: task.done}') {{task.name}}
               td.text-right
-                span(ng-hide='task.done') {{task.added}}
-                a(href='#', ng-show='task.done', ng-click='taskClear(task)') clear
+                span(ng-hide='task.done') {{timeAgo(task.added)}}
+                span.clear(ng-show='task.done', ng-click='clearTask(task); $event.stopPropagation()') clear
 
     script(src='bower_components/angular/angular.min.js')
     script(src='bower_components/moment/min/moment.min.js')
-    script(src='js/controllers.js')
+    script(src='js/controller.js')
