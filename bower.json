@@ -1,13 +1,9 @@
 {
-  "name": "todo",
-  "description": "",
-  "main": "index.js",
+  "name": "mean-todo-app",
   "authors": [
     "Wahid Rahim <wahidrahim@gmail.com>"
   ],
-  "license": "ISC",
-  "moduleType": [],
-  "homepage": "",
+  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -17,8 +13,6 @@
   ],
   "dependencies": {
     "angular": "^1.5.0",
-    "moment": "^2.11.2",
-    "bootstrap": "^3.3.6",
-    "lodash": "^4.3.0"
+    "bootstrap": "^3.3.6"
   }
 }
