@@ -1,6 +1,15 @@
+body {
+  background-image: url('../img/school.png')
+}
+
 .container {
-  padding-top: 100px;
+  background-color: #FFFAF0;
+  margin-top: 100px;
+  padding-top: 10px;
   width: 500px;
+  border-radius: 2px;
+
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
 
 form button {
@@ -16,9 +25,17 @@ form button {
   text-decoration: line-through;
 }
 
-input, button { border-radius: 0 !important; }
+input, button { border-radius: 1px !important; }
 
 .clear {
   cursor: pointer;
   cusror: hand;
+}
+
+th {
+  text-transform: uppercase;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #FDF5E6 !important;
 }

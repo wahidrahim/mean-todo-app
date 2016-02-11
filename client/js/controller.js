@@ -49,12 +49,9 @@ app.controller('TodoController', function($scope, $filter, $http) {
       return console.log(error);
     });
   };
-  $scope.clearCompleted = function() {
+  return $scope.clearCompleted = function() {
     return $http["delete"]('/api/tasks').success(function(tasks) {
       return $scope.tasks = tasks;
     });
-  };
-  return $scope.timeAgo = function(date) {
-    return moment(date).fromNow();
   };
 });

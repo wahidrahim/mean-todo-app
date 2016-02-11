@@ -4,22 +4,18 @@ app.controller 'TodoController', ($scope, $filter, $http) ->
   $scope.task = {}
   $scope.tasks = []
 
-  # get all tasks
   $http.get '/api/tasks'
     .success (tasks) ->
       $scope.tasks = tasks
     .error (error) ->
       console.log error
 
-  # returns the number of incomplete tasks
   $scope.incompleteTasks = () ->
     inc = 0
     $scope.tasks.map (task) ->
       if !task.done then ++inc
     return inc
-    #$filter('filter')($scope.tasks, { done: false }).length
 
-  # add task
   $scope.addTask = (task) ->
     if task.name
       $http.post '/api/tasks', task
@@ -28,7 +24,6 @@ app.controller 'TodoController', ($scope, $filter, $http) ->
         .error (error) ->
           console.log error
 
-    # reset new task
     $scope.task = {}
 
   $scope.toggleComplete = (task) ->
@@ -53,6 +48,3 @@ app.controller 'TodoController', ($scope, $filter, $http) ->
     $http.delete '/api/tasks'
       .success (tasks) ->
         $scope.tasks = tasks
-
-  $scope.timeAgo = (date) ->
-    moment(date).fromNow()
