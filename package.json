@@ -4,6 +4,7 @@
   "description": "",
   "main": "server/app.js",
   "dependencies": {
+    "bower": "*",
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
     "jade": "^1.11.0",
@@ -12,7 +13,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "./node_modules/bower/bin/bower install"
   },
   "author": "Wahid Rahim",
   "license": "MIT"
