@@ -13,6 +13,7 @@
   },
   "devDependencies": {},
   "scripts": {
+    "start": "node ./server/app.js",
     "postinstall": "./node_modules/bower/bin/bower install"
   },
   "author": "Wahid Rahim",
