@@ -4,12 +4,14 @@ logger = require 'morgan'
 path = require 'path'
 mongoose = require 'mongoose'
 
-dbURI = 'localhost'
+dbURI = 'mongodb://localhost'
 
 if (process.env.NODE_ENV == 'production')
   dbURI = process.env.MONGOLAB_URI
 
 mongoose.connect(dbURI)
+mongoose.connection.on 'connected', ->
+  console.log 'Mongoose connected to ' + dbURI
 
 Task = mongoose.model 'Task',
   name: String
