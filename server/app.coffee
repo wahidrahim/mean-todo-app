@@ -5,9 +5,11 @@ path = require 'path'
 mongoose = require 'mongoose'
 
 dbURI = 'mongodb://localhost'
+port = 3000
 
 if (process.env.NODE_ENV == 'production')
   dbURI = process.env.MONGOLAB_URI
+  port = process.env.PORT
 
 mongoose.connect(dbURI)
 mongoose.connection.on 'connected', ->
@@ -20,7 +22,7 @@ Task = mongoose.model 'Task',
 
 app = express()
 
-app.set 'port', 3000
+app.set 'port', port
 app.set 'views', path.join('client', 'views')
 app.set 'view engine', 'jade'
 
@@ -66,6 +68,7 @@ app.delete '/api/tasks', (req, res) ->
 
 app.get '/', (req, res) ->
   res.render 'index'
+
 
 app.listen app.get('port'),
   console.log 'listening at ' + app.get('port')
